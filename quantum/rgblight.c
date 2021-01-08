@@ -900,8 +900,8 @@ void rgblight_task(void) {
 #    ifdef RGBLIGHT_EFFECT_SNAKE
         else if (rgblight_status.base_mode == RGBLIGHT_MODE_SNAKE) {
             // snake mode
-            interval_time = get_interval_time(&RGBLED_SNAKE_INTERVALS[delta / 2], 1, 200);
-            effect_func   = rgblight_effect_snake;
+            interval_time = 500; //get_interval_time(&RGBLED_SNAKE_INTERVALS[delta / 2], 1, 200);
+            effect_func   =  rgblight_effect_dcg; //rgblight_effect_snake;
         }
 #    endif
 #    ifdef RGBLIGHT_EFFECT_KNIGHT
@@ -1020,9 +1020,11 @@ void rgblight_effect_rainbow_swirl(animation_status_t *anim) {
     uint8_t hue;
     uint8_t i;
 
-    for (i = 0; i < rgblight_ranges.effect_num_leds; i++) {
-        hue = (RGBLIGHT_RAINBOW_SWIRL_RANGE / rgblight_ranges.effect_num_leds * i + anim->current_hue);
+    for (i = 0; i < rgblight_ranges.effect_num_leds/2; i++) {
+        hue = (RGBLIGHT_RAINBOW_SWIRL_RANGE / (rgblight_ranges.effect_num_leds/2) * i + anim->current_hue);
         sethsv(hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[i + rgblight_ranges.effect_start_pos]);
+        sethsv(hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[i + 35 + rgblight_ranges.effect_start_pos]);
+
     }
     rgblight_set();
 
@@ -1137,6 +1139,21 @@ void rgblight_effect_knight(animation_status_t *anim) {
             led[cur].r = 0;
             led[cur].g = 0;
             led[cur].b = 0;
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[0]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[1]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[2]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[3]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[4]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[5]);
+
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[35]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[36]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[37]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[38]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[39]);
+            // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[40]);
+
+
 #    ifdef RGBW
             led[cur].w = 0;
 #    endif
@@ -1159,6 +1176,68 @@ void rgblight_effect_knight(animation_status_t *anim) {
     }
 }
 #endif
+
+
+
+#ifdef RGBLIGHT_EFFECT_DCG
+
+   /*
+    {0, 6, HSV_WHITE},
+    {6, 5, HSV_ORANGE}, // 1-5
+    {11, 1, HSV_CORAL}, // ESC
+    {12, 1, HSV_CORAL}, // TAB
+
+    {13, 5, HSV_YELLOW}, // letters 1
+
+    {18, 5, HSV_YELLOW}, // letters 2
+    {23, 1, HSV_CORAL}, // CTRL
+
+    {24, 1, HSV_CORAL}, // SHIFT
+
+    {25, 5, HSV_YELLOW}, // letters 3
+    {31, 4, HSV_CORAL}, // functions
+// right side
+    {35, 6, HSV_WHITE},
+    {41, 5, HSV_ORANGE}, // 1-5
+    {46, 1, HSV_CORAL}, // ESC
+    {47, 1, HSV_CORAL}, // TAB
+
+    {48, 5, HSV_YELLOW}, // letters 1
+
+    {53, 5, HSV_YELLOW}, // letters 2
+    {58, 1, HSV_CORAL}, // CTRL
+
+    {59, 1, HSV_CORAL}, // SHIFT
+
+    {60, 5, HSV_YELLOW}, // letters 3
+    {65, 5, HSV_CORAL} // functions
+
+*/
+/**
+ * Christmas lights effect, with a smooth animation between red & green.
+ */
+void rgblight_effect_dcg(animation_status_t *anim) {
+    // uint8_t outerLeds[8] = {
+    //     11,12,23,24,46,47,58,59
+    // };
+    sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[11]);
+    sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[12]);
+    sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[23]);
+    sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[24]);
+    // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[46]);
+    // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[47]);
+    // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[58]);
+    // sethsv(rgblight_config.hue, rgblight_config.sat, rgblight_config.val, (LED_TYPE *)&led[59]);
+    rgblight_set();
+
+
+
+
+
+}
+#endif
+
+
 
 #ifdef RGBLIGHT_EFFECT_CHRISTMAS
 #    define CUBED(x) ((x) * (x) * (x))
