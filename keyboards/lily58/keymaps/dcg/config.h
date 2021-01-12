@@ -40,9 +40,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   //#define RGBLIGHT_EFFECT_KNIGHT_LENGTH 6
   #define RGBLIGHT_LAYERS
 
-  #define RGBLIGHT_HUE_STEP 32 // number of steps to cycle through the hue by
-  #define RGBLIGHT_SAT_STEP 16 // number of steps to increment the saturation by
-  #define RGBLIGHT_VAL_STEP 6 // number of steps to increment the brightness by
+ // #define RGBLIGHT_HUE_STEP 32 // number of steps to cycle through the hue by
+  //#define RGBLIGHT_SAT_STEP 16 // number of steps to increment the saturation by
+ // #define RGBLIGHT_VAL_STEP 6 // number of steps to increment the brightness by
   #define RGBLIGHT_SLEEP //  the RGB lighting will be switched off when the host goes to sleep
   #define RGBLIGHT_LAYERS_OVERRIDE_RGB_OFF
 #endif
@@ -65,11 +65,14 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   59,60,61,62,63,64,\
        65,66,67,68,69}
        */
-//#undef RGBLED_SPLIT
+#undef RGBLED_SPLIT
 //#undef RGBLED_NUM
 //#define RGBLED_NUM 35
 //#define RGBLIGHT_RAINBOW_SWIRL_RANGE 1950
-#define RGBLIGHT_RAINBOW_SWIRL_RANGE 200
-#define RGBLIGHT_SPLIT_NO_ANIMATION_SYNC
-
-
+//#define RGBLIGHT_RAINBOW_SWIRL_RANGE 200
+//#define RGBLIGHT_SPLIT_NO_ANIMATION_SYNC
+  #define RGBLIGHT_HUE_STEP 4 // number of steps to cycle through the hue by
+  #define RGBLIGHT_SAT_STEP 8 // number of steps to increment the saturation by
+  #define RGBLIGHT_VAL_STEP 8 // number of steps to increment the brightness by
+  #undef RGBLIGHT_LIMIT_VAL
+  #define RGBLIGHT_LIMIT_VAL 90
