@@ -1,0 +1,4 @@
+
+
+
+avrdude -c usbasp-clone -P usb -p m32u4 -U flash:w:"handwired_dgmacro_default_production.hex":a -U lfuse:w:0x5E:m -U hfuse:w:0xD9:m -U efuse:w:0xC3:m -U lock:w:0x3F:m

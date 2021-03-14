@@ -30,7 +30,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   //#define RGBLIGHT_EFFECT_BREATHING
   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
   //#define RGBLIGHT_EFFECT_STATIC_GRADIENT
-  //#define RGBLIGHT_EFFECT_RAINBOW_SWIRL
+  #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
   //#define RGBLIGHT_EFFECT_KNIGHT
   #define RGBLIGHT_EFFECT_SNAKE
   #define RGBLIGHT_MODE_RGB_TEST
@@ -74,5 +74,5 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_HUE_STEP 4 // number of steps to cycle through the hue by
   #define RGBLIGHT_SAT_STEP 8 // number of steps to increment the saturation by
   #define RGBLIGHT_VAL_STEP 8 // number of steps to increment the brightness by
-  #undef RGBLIGHT_LIMIT_VAL
-  #define RGBLIGHT_LIMIT_VAL 90
+  //#undef RGBLIGHT_LIMIT_VAL
+  //#define RGBLIGHT_LIMIT_VAL 90
