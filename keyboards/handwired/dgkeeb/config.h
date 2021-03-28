@@ -20,21 +20,26 @@
 
 #include "config_common.h"
 
-#define MATRIX_COL_PINS {A10, C14,A8, B14, B15, B13, B12,B5,B10, B1, B0, A15 }
+#define MATRIX_COL_PINS {C15, C14,A8, B14, B15, B13, B12,B5,B10, B1, B0, A15 }
 #define MATRIX_ROW_PINS { B4, B3,  A1, A2, A3}
 #define UNUSED_PINS
+#define LED_SCROLL_LOCK_PIN A6
+#define LED_NUM_LOCK_PIN A7
 
-#define BACKLIGHT_PIN           A0
-#define BACKLIGHT_PWM_DRIVER    PWMD5
-#define BACKLIGHT_PWM_CHANNEL   1
+//#define BACKLIGHT_PIN           A0
+//#define BACKLIGHT_PWM_DRIVER    PWMD5
+//#define BACKLIGHT_PWM_CHANNEL   1
 
-#define RGB_DI_PIN A7
+//#define RGB_DI_PIN A7
 
-#define ADC_PIN A0
-
+//#define ADC_PIN A0
+#define AUDIO_STATE_TIMER GPTD4
 #define AUDIO_PIN A4
 #define AUDIO_PIN_ALT A5
 #define AUDIO_PIN_ALT_AS_NEGATIVE
+#ifdef AUDIO_ENABLE
+  #define STARTUP_SONG SONG(STARTUP_SOUND)
+#endif
 /*
 Copyright 2015 Jun Wako <wakojun@gmail.com>
 
@@ -56,11 +61,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0x6465
+#define PRODUCT_ID      0xBAC0
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    none
-#define PRODUCT         onekey
-#define DESCRIPTION     test board for qmk
+#define MANUFACTURER    dgtjns
+#define PRODUCT         dortho
+#define DESCRIPTION     my custom ortho
 
 /* key matrix size */
 #define MATRIX_ROWS 5
